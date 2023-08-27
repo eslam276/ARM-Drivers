@@ -35,6 +35,8 @@ typedef struct
 RCC_Reg_t * RCC = (volatile RCC_Reg_t*)(0x40021000) ;
 
 
+/* Control Rgister Bits */
+
 #define RCC_CR_PLLRDY		25
 #define RCC_CR_PLLON		24
 #define RCC_CR_CSSON		19
@@ -44,6 +46,21 @@ RCC_Reg_t * RCC = (volatile RCC_Reg_t*)(0x40021000) ;
 #define RCC_CR_HSITRIM		3
 #define RCC_CR_HSIRDY		1
 #define RCC_CR_HSION		0
+
+
+/* Clock configuration register Bits */
+
+#define RCC_CFGR_MCO		24
+#define RCC_CFGR_PLLMUL		18
+#define RCC_CFGR_PLLXTPRE   17
+#define RCC_CFGR_PLLSRC     16
+#define RCC_CFGR_ADCPRE		14
+#define RCC_CFGR_PPRE2		11
+#define RCC_CFGR_PPRE1		8
+#define RCC_CFGR_HPRE		4
+#define RCC_CFGR_SWS		2
+#define RCC_CFGR_SW1        1
+#define RCC_CFGR_SW0        0
 
 #endif
 

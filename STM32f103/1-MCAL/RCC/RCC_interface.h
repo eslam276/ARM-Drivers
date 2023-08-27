@@ -28,6 +28,8 @@ typedef enum
 
 uint8_t RCC_u8SetClkStatus(CLK_t Cpoy_Clock , status_t Copy_Status);
 
+void RCC_voidSetSystemClock(CLK_t Cpoy_Clock);
+
 #endif
 
 

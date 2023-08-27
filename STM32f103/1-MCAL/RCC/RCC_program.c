@@ -136,6 +136,33 @@ uint8_t RCC_u8SetClkStatus(CLK_t Cpoy_Clock , status_t Copy_Status)
 
 
 
+void RCC_voidSetSystemClock(CLK_t Cpoy_Clock)
+{
+
+	switch (Cpoy_Clock)
+	{
+	case HSI:
+		CLR_BIT(RCC->RCC_CFGR,RCC_CFGR_SW0);
+		CLR_BIT(RCC->RCC_CFGR,RCC_CFGR_SW1);
+		break;
+	case HSE:
+		SET_BIT(RCC->RCC_CFGR,RCC_CFGR_SW0);
+		CLR_BIT(RCC->RCC_CFGR,RCC_CFGR_SW1);
+		break;
+	case PLL:
+		CLR_BIT(RCC->RCC_CFGR,RCC_CFGR_SW0);
+		SET_BIT(RCC->RCC_CFGR,RCC_CFGR_SW1);
+		break;
+	
+	default:
+		break;
+	}
+
+}
+
+
+
+
 
 
 // /* we want to initialize clock source */
