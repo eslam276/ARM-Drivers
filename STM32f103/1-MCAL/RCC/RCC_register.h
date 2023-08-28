@@ -66,6 +66,19 @@ RCC_Reg_t * RCC = (volatile RCC_Reg_t*)(0x40021000) ;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // #define RCC_START_ADDRESS   0x40021000
 
 // #define RCC_CR  		    *((volatile u32*) (RCC_START_ADDRESS + 0x00) )     /* Clock Control Register                */
