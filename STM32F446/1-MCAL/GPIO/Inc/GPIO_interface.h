@@ -32,7 +32,7 @@ typedef enum
     PORTF,
     PORTG,
     PORTH,
-    INVALID_STATE
+    
 
 }Port_t;
 
@@ -51,7 +51,7 @@ typedef enum
 {
     LOW = 0 ,
     HIGH,
-    INVALID_STATE
+    
 
 }Pin_Value_t ;
 
@@ -85,7 +85,7 @@ typedef enum
     PIN13,
     PIN14,
     PIN15,
-    INVALID_STATE
+    
 
 }Pin_t;
 
@@ -100,7 +100,7 @@ typedef enum
     OUTPUT,
     ALTERNATIVE_FUNCTION ,
     ANALOG,
-    INVALID_STATE
+    
 
 }Mode_t ;
 
@@ -108,11 +108,11 @@ typedef enum
 
 typedef enum
 {
-    LOW = 0 ,
+    LOW_ = 0 ,
     MEDUIM,
     FAST ,
-    HIGH,
-    INVALID_STATE
+    HIGH_,
+    
 
 }OutputSpeed_t ;
 
@@ -123,7 +123,7 @@ typedef enum
 {
     PUSH_PULL = 0 ,
     OPEN_DRAIN,
-    INVALID_STATE
+    
 
 }OutputType_t ;
 
@@ -134,7 +134,7 @@ typedef enum
     NO_PULL = 0 ,
     PULL_UP,
     PULL_DOWN,
-    INVALID_STATE
+    
 
 }PullUpDown_t ;
 
@@ -161,7 +161,7 @@ typedef enum
     AF13,
     AF14,
     AF15,
-    INVALID_STATE
+    
 
 }AltFunc_t ;
 

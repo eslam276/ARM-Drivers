@@ -46,7 +46,7 @@ uint8_t GPIO_u8PinInit (const GPIO_PIN_CFG_t* PinCFG )
     {
 
         /* You should check All Variables */
-       if ((PinCFG->Port < INVALID_STATE) && (PinCFG->PinNum < INVALID_STATE))
+       if ((PinCFG->Port <= PORTH) && (PinCFG->PinNum <= PIN15))
        {
             /* Selsect GPIO mode : Input , Output , Analog , Alternate Function */
             (GPIOPort[PinCFG->Port]->MODER) &= ~(MODER_MASK << ((PinCFG->PinNum) * MODER_PIN_ACCESS)); /* Clear the mode bits*/
@@ -139,7 +139,7 @@ uint8_t GPIO_u8SetPinValue (Port_t Port , Pin_t PinNum , Pin_Value_t Value )
 {
     uint8_t Local_u8ErrorState = OK ;
 
-    if ((Port < INVALID_STATE) && (PinNum < INVALID_STATE))
+    if ((Port <= PORTH) && (PinNum <= PIN15))
     {
         if (Value == LOW)
         {
@@ -180,7 +180,7 @@ uint8_t GPIO_u8TogglePinValue (Port_t Port , Pin_t PinNum )
 {
     uint8_t Local_u8ErrorState = OK ;
 
-    if ((Port < INVALID_STATE) && (PinNum < INVALID_STATE))
+    if ((Port < PORTH) && (PinNum < PIN15))
     {
         TOG_BIT(GPIOPort[Port]->ODR,PinNum);
     }
@@ -201,7 +201,7 @@ uint8_t GPIO_u8ReadPinValue (Port_t Port , Pin_t PinNum , uint8_t * Value )
 {
     uint8_t Local_u8ErrorState = OK ;
 
-    if ((Port < INVALID_STATE) && (PinNum < INVALID_STATE))
+    if ((Port < PORTH) && (PinNum < PIN15))
     {
         if (Value != NULL)
         {
