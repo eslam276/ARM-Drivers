@@ -32,7 +32,7 @@ typedef struct
 
 }RCC_Reg_t;
 
-RCC_Reg_t * RCC = (volatile RCC_Reg_t*)(0x40021000) ;
+RCC_Reg_t * RCC = ( RCC_Reg_t*)(0x40021000) ;
 
 
 /* Control Rgister Bits */
