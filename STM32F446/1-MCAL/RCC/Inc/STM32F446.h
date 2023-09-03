@@ -102,7 +102,6 @@ typedef struct
   volatile uint32_t DCKCFGR2;      /*!< RCC Dedicated Clocks configuration register 2,                */
 } RCC_RegDef_t;
 
-#define RCC                 ((RCC_RegDef_t*)RCC_BASE_ADDRESS)
 
 
 
