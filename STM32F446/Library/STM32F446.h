@@ -80,7 +80,7 @@ typedef struct
     volatile uint32_t  ODR ;                                    /* GPIO port output data register */
     volatile uint32_t  BSRR ;                                   /* GPIO port bit set/reset register */
     volatile uint32_t  LCKR ;                                   /* GPIO port configuration lock register */
-    volatile uint32_t  AFRL[2] ;                                /* GPIO alternate function  register */
+    volatile uint32_t  AFR[2] ;                                /* GPIO alternate function  register */
                                   
 
 

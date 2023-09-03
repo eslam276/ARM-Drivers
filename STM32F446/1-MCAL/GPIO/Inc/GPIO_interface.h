@@ -14,6 +14,14 @@
 #include <stdint.h>
 
 
+
+
+/**
+ * @brief 
+ * 
+ * @Port_t enum
+ * 
+ */
 typedef enum
 {
     PORTA = 0 ,
@@ -23,19 +31,41 @@ typedef enum
     PORTE,
     PORTF,
     PORTG,
-    PORTH
+    PORTH,
+    INVALID_STATE
 
 }Port_t;
 
 
 
 
+
+
+/**
+ * @brief 
+ * @Pin_Value_t enum
+ * 
+ */
+
 typedef enum
 {
     LOW = 0 ,
-    HIGH
+    HIGH,
+    INVALID_STATE
 
 }Pin_Value_t ;
+
+
+
+
+
+
+
+/**
+ * @brief 
+ * @Pin_t enum
+ * 
+ */
 
 typedef enum
 {
@@ -54,9 +84,13 @@ typedef enum
     PIN12,
     PIN13,
     PIN14,
-    PIN15
+    PIN15,
+    INVALID_STATE
 
 }Pin_t;
+
+
+
 
 
 
@@ -65,7 +99,8 @@ typedef enum
     INPUT = 0 ,
     OUTPUT,
     ALTERNATIVE_FUNCTION ,
-    ANALOG
+    ANALOG,
+    INVALID_STATE
 
 }Mode_t ;
 
@@ -76,7 +111,8 @@ typedef enum
     LOW = 0 ,
     MEDUIM,
     FAST ,
-    HIGH
+    HIGH,
+    INVALID_STATE
 
 }OutputSpeed_t ;
 
@@ -86,7 +122,8 @@ typedef enum
 typedef enum
 {
     PUSH_PULL = 0 ,
-    OPEN_DRAIN
+    OPEN_DRAIN,
+    INVALID_STATE
 
 }OutputType_t ;
 
@@ -96,7 +133,8 @@ typedef enum
 {
     NO_PULL = 0 ,
     PULL_UP,
-    PULL_DOWN
+    PULL_DOWN,
+    INVALID_STATE
 
 }PullUpDown_t ;
 
@@ -122,7 +160,8 @@ typedef enum
     AF12,
     AF13,
     AF14,
-    AF15
+    AF15,
+    INVALID_STATE
 
 }AltFunc_t ;
 
@@ -163,20 +202,20 @@ typedef struct
     PullUpDown_t PullType ;
     AltFunc_t AltFunc ;
 
-}PIN_CFG_t;
+}GPIO_PIN_CFG_t;
 
 
 
 
-uint8_t GPIO_u8PinInit (const PIN_CFG_t* PinCFG );
+uint8_t GPIO_u8PinInit (const GPIO_PIN_CFG_t* PinCFG );
 
-uint8_t GPIO_u8SetPinValue (Port_t Port , Pin_t PINNUM , Pin_Value_t Value );
-
-
-uint8_t GPIO_u8TogglePinValue (Port_t Port , Pin_t PINNUM );
+uint8_t GPIO_u8SetPinValue (Port_t Port , Pin_t PinNum , Pin_Value_t Value );
 
 
-uint8_t GPIO_u8ReadPinValue (Port_t Port , Pin_t PINNUM , uint8_t * Value );
+uint8_t GPIO_u8TogglePinValue (Port_t Port , Pin_t PinNum );
+
+
+uint8_t GPIO_u8ReadPinValue (Port_t Port , Pin_t PinNum , uint8_t * Value );
 
 
 
