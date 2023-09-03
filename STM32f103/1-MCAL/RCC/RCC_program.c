@@ -196,7 +196,7 @@ void RCC_voidPLLConfig(PLL_Config_t Copy_Cfg , PLL_Config_t Copy_PLLSRC)
 	{
 		CLR_BIT(RCC->RCC_CFGR,RCC_CFGR_PLLSRC);
 	}
-	else if (Copy_PLLSRC == HSE)
+	else if (Copy_PLLSRC == HSE_)
 	{
 		SET_BIT(RCC->RCC_CFGR,RCC_CFGR_PLLSRC);
 	}

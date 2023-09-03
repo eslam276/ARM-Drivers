@@ -55,7 +55,7 @@ typedef enum
 	/* for PLL_SRC parameter */
 
 	HSI_devided_by2,
-	HSE
+	HSE_
 
 }PLL_Config_t;
 
