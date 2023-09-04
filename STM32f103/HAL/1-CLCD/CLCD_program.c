@@ -8,6 +8,7 @@
 
 #include <stdint.h>
 #include "BIT_MATH.h"
+#include "defines.h"
 
 
 #include "GPIO_interface.h"
