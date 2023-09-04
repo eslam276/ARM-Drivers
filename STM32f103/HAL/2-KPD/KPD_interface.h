@@ -10,6 +10,10 @@
 #ifndef KPD_interface_H_
 #define KPD_interface_H_
 
-uint8 KPD_u8GetPressedKey(void);
+#include <stdint.h>
+
+void KPD_PinInint(void);
+
+uint8_t KPD_u8GetPressedKey(void);
 
 #endif
