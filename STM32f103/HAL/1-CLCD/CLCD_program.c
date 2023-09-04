@@ -206,7 +206,7 @@ void CLCD_voidSendNumber(signed int Copy_s32Number)
 	char Local_chNumberArr[10];
 	uint8_t Local_u8RightDigit;
 	uint8_t Local_u8Counter=0;
-	uint8_t Local_s8Counter2;
+	signed char Local_s8Counter2;
 
 	if (Copy_s32Number == 0)
 	{
