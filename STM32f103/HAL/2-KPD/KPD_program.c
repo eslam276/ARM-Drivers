@@ -20,10 +20,10 @@ void KPD_PinInint(void)
 
 	/* ROWS CFG  A --> 4,5,6,7    INPUT PULLED_UP  */
 
-	GPIO_PinConfig_t A4 = { .Port = PORTA , .PinNum = PIN4 , .Mode = INPUT , .Input = FLOATING  } ;
-	GPIO_PinConfig_t A5 = { .Port = PORTA , .PinNum = PIN5 , .Mode = INPUT , .Input = FLOATING  } ;
-	GPIO_PinConfig_t A6 = { .Port = PORTA , .PinNum = PIN6 , .Mode = INPUT , .Input = FLOATING  } ;
-	GPIO_PinConfig_t A7 = { .Port = PORTA , .PinNum = PIN7 , .Mode = INPUT , .Input = FLOATING  } ;
+	GPIO_PinConfig_t A4 = { .Port = PORTA , .PinNum = PIN4 , .Mode = INPUT , .Input = PULLUP_PULLDOWN  } ;
+	GPIO_PinConfig_t A5 = { .Port = PORTA , .PinNum = PIN5 , .Mode = INPUT , .Input = PULLUP_PULLDOWN  } ;
+	GPIO_PinConfig_t A6 = { .Port = PORTA , .PinNum = PIN6 , .Mode = INPUT , .Input = PULLUP_PULLDOWN  } ;
+	GPIO_PinConfig_t A7 = { .Port = PORTA , .PinNum = PIN7 , .Mode = INPUT , .Input = PULLUP_PULLDOWN  } ;
 
 	/* Coulmns CFG B->  11 ,10 ,1,0   OUT   HIGH */
 
@@ -48,6 +48,12 @@ void KPD_PinInint(void)
 	GPIO_u8SetPinValue(PORTB,PIN1,PIN_HIGH);
 	GPIO_u8SetPinValue(PORTB,PIN10,PIN_HIGH);
 	GPIO_u8SetPinValue(PORTB,PIN11,PIN_HIGH);
+
+
+	GPIO_u8SetPinValue(PORTA,PIN4,PIN_HIGH);
+	GPIO_u8SetPinValue(PORTA,PIN5,PIN_HIGH);
+	GPIO_u8SetPinValue(PORTA,PIN6,PIN_HIGH);
+	GPIO_u8SetPinValue(PORTA,PIN7,PIN_HIGH);
 
 }
 
