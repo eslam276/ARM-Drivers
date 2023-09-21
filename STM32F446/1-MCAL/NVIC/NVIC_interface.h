@@ -127,10 +127,9 @@ void INT_Disable(INTReq_Num_t IREQ_Num);
 void SetPendingFlag(INTReq_Num_t IREQ_Num);
 void CLRPendingFlag(INTReq_Num_t IREQ_Num);
 
-
-
-
 ActiveFlagStatus_t GetActiveFlag(INTReq_Num_t IREQ_Num);
+
+void NVIC_voidSetIRQPriority (INTReq_Num_t IREQ_Num , uint8_t Priority);
 
 
 

@@ -106,4 +106,10 @@ ActiveFlagStatus_t GetActiveFlag(INTReq_Num_t IREQ_Num)
     return FlagStatus ;
 }
 
+
+
+void NVIC_voidSetIRQPriority (INTReq_Num_t IREQ_Num , uint8_t Priority)
+{
+    NVIC->IPR[IREQ_Num] = Priority << IPR_SHIFT ;
+}
    

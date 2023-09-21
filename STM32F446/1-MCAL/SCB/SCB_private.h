@@ -2,7 +2,7 @@
 /*****************************************************************/
 /********************		Author: Eslam Nasr  	**************/
 /********************		Layer: MCAL				**************/
-/********************		SWC: NVIC				**************/
+/********************		SWC: SCB				**************/
 /********************		Version: 1.00			**************/
 /********************		Date: 20-9-2023			**************/
 /*****************************************************************/
@@ -10,16 +10,13 @@
 
 
 
-#ifndef NVIC_PRIVATE_H
-#define NVIC_PRIVATE_H
 
+#ifndef SCB_PRIVATE_H
+#define SCB_PRIVATE_H
 
+#define VECTKEY_SHIFT            16u
+#define PRIGROUP_SHIFT           8u
 
-#define REG_DIVISION_FACTOR     32u
-
-#define IPR_SHIFT               4u
-
-
-
+#define VECTKEY                  0x5FAu
 
 #endif
