@@ -18,7 +18,7 @@
 #include "BIT_MATH.h"
 
 
-static void (* EXTI_voidCallback[23] )(void) = {NULL};
+static void (* EXTI_CallBack[16] )(void) = {NULL};
 
 
 uint8_t EXTI_u8Init(EXTI_Config_t * Copy_stConfig)
@@ -58,7 +58,7 @@ uint8_t EXTI_u8Init(EXTI_Config_t * Copy_stConfig)
 
         if (Copy_stConfig->CallBack != NULL)
         {
-            EXTI_voidCallback[Copy_stConfig->EXTI_Num]= Copy_stConfig->CallBack ;
+            EXTI_CallBack[Copy_stConfig->EXTI_Num]= Copy_stConfig->CallBack ;
         }
         else
         {
@@ -179,3 +179,151 @@ uint8_t EXTI_u8ClearPendingFlag(EXTI_Number_t Copy_enINTNum)
     return Local_u8ErrorState ;
 
 }
+
+
+
+
+
+void EXTI0_IRQHandler(void)
+{
+
+	EXTI_u8ClearPendingFlag(EXTI_0);
+
+    if ( EXTI_CallBack[EXTI_0] != NULL )
+    {
+        EXTI_CallBack[EXTI_0]();
+    }
+    
+	
+}
+void EXTI1_IRQHandler(void)
+{
+	EXTI_u8ClearPendingFlag(EXTI_1);
+	 if ( EXTI_CallBack[EXTI_1] != NULL )
+    {
+        EXTI_CallBack[EXTI_1]();
+    }
+}
+void EXTI2_IRQHandler(void)
+{
+	EXTI_u8ClearPendingFlag(EXTI_2);
+	 if ( EXTI_CallBack[EXTI_2] != NULL )
+    {
+        EXTI_CallBack[EXTI_2]();
+    }
+}
+void EXTI3_IRQHandler(void)
+{
+	EXTI_u8ClearPendingFlag(EXTI_3);
+	 if ( EXTI_CallBack[EXTI_3] != NULL )
+    {
+        EXTI_CallBack[EXTI_3]();
+    }
+}
+void EXTI4_IRQHandler(void)
+{
+	EXTI_u8ClearPendingFlag(EXTI_4);
+	if ( EXTI_CallBack[EXTI_4] != NULL )
+    {
+        EXTI_CallBack[EXTI_4]();
+    }
+}
+void EXTI9_5_IRQHandler(void)
+{
+	if(((EXTI->EXTI_PR)>>EXTI_5 & 1) == 1)
+	{
+		EXTI_u8ClearPendingFlag(EXTI_5);
+		if ( EXTI_CallBack[EXTI_5] != NULL )
+        {
+            EXTI_CallBack[EXTI_5]();
+        }
+
+	}
+	if(((EXTI->EXTI_PR)>>EXTI_6 & 1) == 1)
+	{
+		EXTI_u8ClearPendingFlag(EXTI_6);
+		if ( EXTI_CallBack[EXTI_6] != NULL )
+        {
+            EXTI_CallBack[EXTI_6]();
+        }
+	}
+	if(((EXTI->EXTI_PR)>>EXTI_7 & 1) == 1)
+	{
+		EXTI_u8ClearPendingFlag(EXTI_7);
+		if ( EXTI_CallBack[EXTI_7] != NULL )
+        {
+            EXTI_CallBack[EXTI_7]();
+        }
+	}
+	if(((EXTI->EXTI_PR)>>EXTI_8 & 1) == 1)
+	{
+		EXTI_u8ClearPendingFlag(EXTI_8);
+		if ( EXTI_CallBack[EXTI_8] != NULL )
+        {
+            EXTI_CallBack[EXTI_8]();
+        }
+	}
+	if(((EXTI->EXTI_PR)>>EXTI_9 & 1) == 1)
+	{
+		EXTI_u8ClearPendingFlag(EXTI_9);
+		if ( EXTI_CallBack[EXTI_9] != NULL )
+        {
+            EXTI_CallBack[EXTI_9]();
+        }
+	}
+}
+
+
+
+void EXTI15_10_IRQHandler(void)
+{
+	if(((EXTI->EXTI_PR)>>EXTI_10 & 1) == 1)
+	{
+		EXTI_u8ClearPendingFlag(EXTI_10);
+		if ( EXTI_CallBack[EXTI_10] != NULL )
+        {
+            EXTI_CallBack[EXTI_10]();
+        }
+	}
+	if(((EXTI->EXTI_PR)>>EXTI_11 & 1) == 1)
+	{
+		EXTI_u8ClearPendingFlag(EXTI_11);
+		if ( EXTI_CallBack[EXTI_11] != NULL )
+        {
+            EXTI_CallBack[EXTI_11]();
+        }
+	}
+	if(((EXTI->EXTI_PR)>>EXTI_12 & 1) == 1)
+	{
+		EXTI_u8ClearPendingFlag(EXTI_12);
+		if ( EXTI_CallBack[EXTI_12] != NULL )
+        {
+            EXTI_CallBack[EXTI_12]();
+        }
+	}
+	if(((EXTI->EXTI_PR)>>EXTI_13 & 1) == 1)
+	{
+		EXTI_u8ClearPendingFlag(EXTI_13);
+		if ( EXTI_CallBack[EXTI_13] != NULL )
+        {
+            EXTI_CallBack[EXTI_13]();
+        }
+	}
+	if(((EXTI->EXTI_PR)>>EXTI_14 & 1) == 1)
+	{
+		EXTI_u8ClearPendingFlag(EXTI_14);
+		if ( EXTI_CallBack[EXTI_14] != NULL )
+        {
+            EXTI_CallBack[EXTI_14]();
+        }
+	}
+	if(((EXTI->EXTI_PR)>>EXTI_15 & 1) == 1)
+	{
+		EXTI_u8ClearPendingFlag(EXTI_15);
+		if ( EXTI_CallBack[EXTI_15] != NULL )
+        {
+            EXTI_CallBack[EXTI_15]();
+        }
+	}
+}
+
