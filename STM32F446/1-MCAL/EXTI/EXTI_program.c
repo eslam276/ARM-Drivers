@@ -84,7 +84,7 @@ uint8_t EXTI_u8Init(EXTI_Config_t * Copy_stConfig)
     }
     else
     {
-        Local_u8ErrorState = NULL_PTR_ERR
+        Local_u8ErrorState = NULL_PTR_ERR ;
     }
     
     
