@@ -48,14 +48,7 @@ typedef enum
 	EXTI_12,
 	EXTI_13,
 	EXTI_14,
-	EXTI_15,
-	EXTI_16,
-	EXTI_17,
-	EXTI_18,
-	EXTI_19,
-	EXTI_20,
-	EXTI_21,
-	EXTI_22
+	EXTI_15
 }EXTI_Number_t;
 
 typedef struct
@@ -72,6 +65,7 @@ uint8_t EXTI_u8Enable_INT(EXTI_Number_t Copy_enINTNum);
 uint8_t EXTI_u8Disable_INT(EXTI_Number_t Copy_enINTNum);
 uint8_t EXTI_u8GetPendingFlag(EXTI_Number_t Copy_enINTNum,uint8_t* Copy_pValue);
 uint8_t EXTI_u8ClearPendingFlag(EXTI_Number_t Copy_enINTNum);
+uint8_t EXTI_u8SetTriggerSrc(EXTI_Trigger_t Trigger_Config ,EXTI_Number_t Copy_enINTNum );
 
 
 

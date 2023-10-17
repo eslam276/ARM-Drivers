@@ -17,8 +17,8 @@
 #include "defines.h"
 #include "BIT_MATH.h"
 
-
-static void (* EXTI_CallBack[16] )(void) = {NULL};
+/* Global array of ptr to function to carry callback functions */
+static void ( *EXTI_CallBack[16] )(void) = {NULL};
 
 
 uint8_t EXTI_u8Init(EXTI_Config_t * Copy_stConfig)
@@ -38,16 +38,20 @@ uint8_t EXTI_u8Init(EXTI_Config_t * Copy_stConfig)
 
             case EXTI_RISING_EDGE:
                 SET_BIT(EXTI->EXTI_RTSR , Copy_stConfig->EXTI_Num);
+                CLR_BIT(EXTI->EXTI_FTSR , Copy_stConfig->EXTI_Num);
                 break;
+
             case EXTI_FALLING_EDGE:
                 SET_BIT(EXTI->EXTI_FTSR , Copy_stConfig->EXTI_Num);
+                CLR_BIT(EXTI->EXTI_RTSR , Copy_stConfig->EXTI_Num);
                 break;
+
             case EXTI_RISING_FALLING_EDGE:
                 SET_BIT(EXTI->EXTI_RTSR , Copy_stConfig->EXTI_Num);
                 SET_BIT(EXTI->EXTI_FTSR , Copy_stConfig->EXTI_Num);
                 break;
             
-            default:
+            default: Local_u8ErrorState = NOK ;
                 break;
         }
 
@@ -78,6 +82,10 @@ uint8_t EXTI_u8Init(EXTI_Config_t * Copy_stConfig)
         {
             CLR_BIT( EXTI->EXTI_EMR , Copy_stConfig->EXTI_Num);
         }
+        else
+        {
+            Local_u8ErrorState = NOK ;
+        }
 
 
 
@@ -93,6 +101,39 @@ uint8_t EXTI_u8Init(EXTI_Config_t * Copy_stConfig)
 
 
 
+uint8_t EXTI_u8SetTriggerSrc(EXTI_Trigger_t Trigger_Config ,EXTI_Number_t Copy_enINTNum )
+{
+     uint8_t   Local_u8ErrorState = OK ;
+
+    switch (Trigger_Config)
+        {
+
+            case EXTI_RISING_EDGE:
+                SET_BIT(EXTI->EXTI_RTSR , Copy_enINTNum);
+                CLR_BIT(EXTI->EXTI_FTSR , Copy_enINTNum);
+                break;
+
+            case EXTI_FALLING_EDGE:
+                SET_BIT(EXTI->EXTI_FTSR , Copy_enINTNum);
+                CLR_BIT(EXTI->EXTI_RTSR , Copy_enINTNum);
+                break;
+
+            case EXTI_RISING_FALLING_EDGE:
+                SET_BIT(EXTI->EXTI_RTSR , Copy_enINTNum);
+                SET_BIT(EXTI->EXTI_FTSR , Copy_enINTNum);
+                break;
+            
+            default: Local_u8ErrorState = NOK ;
+                break;
+        }
+
+
+
+
+     return Local_u8ErrorState ;
+}
+
+
 
 
 
@@ -106,7 +147,7 @@ uint8_t EXTI_u8Enable_INT(EXTI_Number_t Copy_enINTNum)
 
     uint8_t   Local_u8ErrorState = OK ;
 
-    if ( Copy_enINTNum <= EXTI_22)
+    if ( Copy_enINTNum <= EXTI_15)
     {
         SET_BIT( EXTI->EXTI_EMR , Copy_enINTNum) ;
     }
@@ -127,7 +168,7 @@ uint8_t EXTI_u8Disable_INT(EXTI_Number_t Copy_enINTNum)
 
     uint8_t   Local_u8ErrorState = OK ;
 
-    if ( Copy_enINTNum <= EXTI_22)
+    if ( Copy_enINTNum <= EXTI_15)
     {
         CLR_BIT( EXTI->EXTI_EMR , Copy_enINTNum) ;
     }
@@ -161,12 +202,14 @@ uint8_t EXTI_u8GetPendingFlag(EXTI_Number_t Copy_enINTNum,uint8_t* Copy_pValue)
     
 }
 
+
+
 uint8_t EXTI_u8ClearPendingFlag(EXTI_Number_t Copy_enINTNum)
 {
 
      uint8_t   Local_u8ErrorState = OK ;
 
-    if (Copy_enINTNum <= EXTI_22 )
+    if (Copy_enINTNum <= EXTI_15 )
     {
        SET_BIT( EXTI->EXTI_PR , Copy_enINTNum ) ;
 
