@@ -29,7 +29,10 @@ uint8_t SYSCFG_u8SetLine(SYSCFG_Line_t Copy_enLineValue, SYSCFG_Port_t Copy_u8en
 		{
              uint8_t Local_u8RegNum = Copy_enLineValue / REG_ACCESS;
              uint8_t Local_u8BitNum = Copy_enLineValue % BIT_ACCESS;
-             SYSCFG->EXTICR[Local_u8RegNum] = Copy_u8enPortValue << (Local_u8BitNum *BIT_ACCESS);
+
+            /* Clear the required 4 bits */
+             SYSCFG->EXTICR[Local_u8RegNum] &= ( ~ ( 0b1111 << Local_u8BitNum ));
+             SYSCFG->EXTICR[Local_u8RegNum] |= Copy_u8enPortValue << (Local_u8BitNum *BIT_ACCESS);
 		}
 		else
 		{
